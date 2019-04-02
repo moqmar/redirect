@@ -23,11 +23,12 @@ Variable | Description
 `TO` | Redirection target/prefix. Required.
 `PERMANENT` | Use `301 Moved Permanently` instead of `302 Found` if this is set to something other than an empty string, `0`, `false` or `no`.
 `PREFIX` | Prefix regular expression to remove from the path - a leading slash is required, a trailing slash is recommended in most cases. To completely ignore the path, set this to `.*` - the default behaviour is to keep the full path.
-`HOST` & `PORT` | The hostname and port to listen on.
+`HOST`/`PORT` | The hostname and port to listen on.
 
 
 ## Examples
 Environment | Request | Target
+----------- | ------- | ------
 `TO=https://example.org/hello PERMANENT=1 PREFIX=/world/` | http://example.com/world/test | 301 https://example.org/hello/test
 `TO=https://example.org/hello PERMANENT=1 PREFIX=/world/` | http://example.com/whatever/test | 301 https://example.org/hello/whatever/test
 `TO=https://example.org/hello PERMANENT=1 PREFIX=/[^/]*/` | http://example.com/whatever/test | 301 https://example.org/hello/test
